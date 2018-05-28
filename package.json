@@ -1,0 +1,81 @@
+{
+  "name": "mz-upload",
+  "displayName": "mz-upload",
+  "description": "一个上传文件至内网服务器的插件",
+  "version": "0.0.2",
+  "publisher": "ylg58",
+  "engines": {
+    "vscode": "^1.23.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.mz-upload-image",
+    "onCommand:extension.mz-upload-file"
+  ],
+  "main": "./extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.mz-upload-image",
+        "title": "mz-upload-image"
+      },
+      {
+        "command": "extension.mz-upload-file",
+        "title": "mz-upload-file"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.mz-upload-image",
+        "key": "ctrl+alt+v",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.mz-upload-file",
+        "key": "ctrl+alt+f",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "mz-upload configuration",
+      "properties": {
+        "mz-upload.remotePath": {
+          "type": "string",
+          "default": "https://oss.meizu.com/gitbook/",
+          "description": "生成的远程地址的前缀"
+        },
+        "mz-upload.domain": {
+          "type": "string",
+          "default": "http://itd-gitbook.meizu.com/upload",
+          "description": "内网映射的域名或者ip地址"
+        },
+        "mz-upload.localPath": {
+          "type": "string",
+          "default": "./assets",
+          "description": "文件本地保存位置"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^7.0.43",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "copy-paste": "^1.3.0",
+    "eslint": "^4.11.0",
+    "express": "^4.16.3",
+    "moment": "^2.22.1",
+    "multer": "^1.3.0",
+    "request": "^2.87.0",
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6"
+  }
+}
