@@ -1,14 +1,11 @@
 const vscode = require('vscode');
 const path = require('path');
 const fs = require('fs');
-const http = require('http');
-const url = require('url');
-const moment = require('moment');
+const moment =require('moment');
 const {
     spawn
 } = require('child_process');
-const request = require('request');
-const clipboard  = require("copy-paste");
+const request = require('request')
 
 
 function activate(context) {
@@ -52,6 +49,8 @@ function initFile(){
     let config = vscode.workspace.getConfiguration('mz-upload');
     const mdFilePath = editor.document.fileName;
     inputPath(config,mdFilePath, editor ); 
+
+    // 从windows剪贴板获取文件地址
      /* const scriptPath = path.join(__dirname, './file.ps1');
         const powershell = spawn('powershell', [
         '-noprofile',
